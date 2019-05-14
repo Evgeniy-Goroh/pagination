@@ -1,0 +1,23 @@
+﻿{{.page.PageTemp}}
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<ul class="pagination">
+	{{if not .Page.IsFirst}}<li><a href="{{.Page.FristURL}}" data-num="{{.Page.FristURL}}"><i class="material-icons">first_page</i></a></li>{{end}}
+	{{if .Page.HasPrevious}}<li><a href="{{.Page.PreviousURL}}" data-num="{{.Page.PreviousURL}}"><i class="material-icons">chevron_left</i></a></li>{{end}}
+
+	{{range .Page.PageURLs}}
+		{{if eq .Num -1}}
+			...
+		{{else}}
+			<li {{if .IsCurrent}} class="active" {{end}} ><a href="{{.Path}}" data-num="{{.Num}}">{{.Num}}</a></li>
+		{{end}}
+	{{end}}
+
+	{{if .Page.HasNext}}<li><a href="{{.Page.NextURL}}" data-num="{{.Page.NextURL}}"><i class="material-icons">chevron_right</i></a></li>{{end}}
+	{{if not .Page.IsLast}}<li><a href="{{.Page.LastURL}}" data-num="{{.Page.LastURL}}"><i class="material-icons">last_page</i></a></li>{{end}}
+</ul>
+
